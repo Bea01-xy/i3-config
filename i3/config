@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $fn XF86WakeUp
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -187,7 +188,7 @@ bar {
 
 exec --no-startup-id blueman-applet
 
-exec_always --no-startup-id feh --bg-scale /home/alt_bea/Pictures/wallpaper_1.jpg
+exec_always --no-startup-id feh --bg-scale /home/alt_bea/Pictures/wallpaper_4.jpg
 
 exec --no-startup-id xfce4-power-manager
 
@@ -216,3 +217,22 @@ exec_always --no-startup-id ~/.local/bin/monitors
 bindsym $mod+Shift+d exec --no-startup-id flatpak run io.github.xiaoyifang.goldendict_ng
 
 bindsym $mod+Tab focus prev
+bindsym $mod+Shift+Tab focus next
+
+set $mode_launcher Launch: [f]irefox [c]ode [w]echat [n]autilus [q]q [o]bsidian
+
+bindsym $mod+o mode "$mode_launcher"
+
+mode "$mode_launcher" {
+    bindsym f exec firefox
+    bindsym c exec code
+    bindsym w exec wechat
+    bindsym n exec nautilus
+    bindsym q exec qq
+    bindsym o exec ~/Downloads/Obsidian-1.11.7.AppImage
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+    bindsym $mod+o mode "default"
+}
+
