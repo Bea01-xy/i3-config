@@ -184,11 +184,16 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        colors {
+        background #282828
+        statusline #ebdbb2
+        focused_workspace #83a598 #83a598 #282828
+    }
 }
 
 exec --no-startup-id blueman-applet
 
-exec_always --no-startup-id feh --bg-scale /home/alt_bea/Pictures/wallpaper_4.jpg
+exec_always --no-startup-id feh --bg-scale /home/alt_bea/Pictures/wallpaper_4.png
 
 exec --no-startup-id xfce4-power-manager
 
@@ -219,20 +224,38 @@ bindsym $mod+Shift+d exec --no-startup-id flatpak run io.github.xiaoyifang.golde
 bindsym $mod+Tab focus prev
 bindsym $mod+Shift+Tab focus next
 
-set $mode_launcher Launch: [f]irefox [c]ode [w]echat [n]autilus [q]q [o]bsidian
+set $mode_launcher Launch: [f]irefox [v]scode [w]echat [n]autilus [q]q [o]bsidian [c]herry
 
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
     bindsym f exec firefox
-    bindsym c exec code
+    bindsym v exec code
     bindsym w exec wechat
     bindsym n exec nautilus
     bindsym q exec qq
-    bindsym o exec ~/Downloads/Obsidian-1.11.7.AppImage
+    bindsym o exec ~/Public/Obsidian-1.11.7.AppImage
+    bindsym c exec ~/Public/Cherry-Studio-1.7.17-x86_64.AppImage
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
     bindsym $mod+o mode "default"
 }
 
+# Gruvbox Dark 颜色定义
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d6a
+set $gray #a89984
+set $orange #fe8019
+
+# 窗口颜色配置
+# 类名                  边框    背景    文字    指示器  子边框
+client.focused          $blue   $blue   $bg     $aqua   $blue
+client.focused_inactive #32302f #32302f $gray   #32302f #32302f
+client.unfocused        #32302f #32302f $gray   #32302f #32302f
+client.urgent           $red    $red    $bg     $red    $red
